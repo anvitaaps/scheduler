@@ -3,9 +3,22 @@ let Slot = require('../models/slot');
 // const { Appointment, Slot } = Model;
 const Nexmo = require("nexmo");
 const appointmentController = {
-  all(req, res) {
+ async all(req, res) {
     // Returns all appointments
-    Appointment.find({}).exec((err, appointments) => res.json(appointments));
+    const appointments = await Appointment.aggregate(
+      [
+        {
+          $lookup:
+          {
+            from: "slots",
+            localField: "slots",
+            foreignField: "_id",
+            as: "slot"
+          }
+        }
+      ]
+    );
+    return res.json({ error: false, data: appointments });
   },
   async create(req, res) {
     var requestBody = req.body;

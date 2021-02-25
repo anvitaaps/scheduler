@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
         type: String
     },
     slot_date: {
-        type: String
+        type: Number
     },
     created_at: Date
   });

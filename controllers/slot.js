@@ -1,4 +1,5 @@
 let Slot = require('../models/slot');
+let Config = require('../models/config');
 const slotController = {
   all (req, res) {
     // Returns all Slots
@@ -16,14 +17,14 @@ const slotController = {
     
     const { query } = req;
     
-    // const data = await AdminConfig.find({})
-    var starttime = "10:00:00";
-    var interval = "30";
-    var endtime = "17:00:00";
-    var timeslots = [];
+    const data = await Config.find({})
+    var starttime = await data[0]['start_hours'];
+    var interval = await data[0]['duration'];
+    var endtime = await data[0]['end_hours'];
+    var timeslots = [{time: data[0]['start_hours'], booked: false}];
 
     let bookedSlots = await Slot.find({"slot_date": query.selectedDate})
-    console.log('request: ', query.selectedDate, bookedSlots);
+    console.log('request: ', data[0]['start_hours'], data);
 
     while (starttime != endtime) {
       starttime = slotController.addMinutes(starttime, interval);

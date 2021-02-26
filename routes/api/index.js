@@ -9,4 +9,5 @@ router.get('/retrieveSlotsByDate', slotController.getSlotForDate);
 router.get('/getTimezones', configController.getTimezones);
 router.post('/appointmentCreate', appointmentController.create);
 router.post('/adminConfig', configController.postAdminConfig);
+router.put('/updateAdminConfig', configController.putAdminConfig);
 module.exports = router;

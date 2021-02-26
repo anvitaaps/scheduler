@@ -9,6 +9,14 @@ const configController = {
         return res.json({ error: false, message: 'Configuration Added Successfully', data: data })
     },
 
+    async putAdminConfig(req, res) {
+        const { query, body } = req;
+        const config = await Config.find({})
+        console.log('config: ', config);
+        const data = await Config.findByIdAndUpdate(config[0]._id, req.body);
+        return res.json({ error: false, message: 'Configuration Updated Successfully', data: data })
+    },
+
     async getAdminConfig(req, res) {
         const { query } = req;
         const data = await AdminConfig.find({})

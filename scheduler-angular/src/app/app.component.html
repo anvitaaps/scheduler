@@ -10,6 +10,14 @@
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Select Timezone</mat-label>
+              <mat-select [(ngModel)]="selectedTimezone">
+                <mat-option *ngFor="let item of timezones" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
             <div fxLayout="row">
               <button mat-mini-fab color="primary" class="available-button">
               </button><span>Available Slots</span>

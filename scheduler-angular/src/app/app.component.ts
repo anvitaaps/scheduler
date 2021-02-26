@@ -38,12 +38,15 @@ export class AppComponent {
   selectedTime;
   freeSlots: any[] = [];
   calendarDate;
+  timezones;
+  selectedTimezone;
   @Output()
   dateChange: EventEmitter<MatDatepickerInputEvent<any>> = new EventEmitter();
   displayedColumns = ['name', 'email', 'phone', 'slot_date', 'slot_time'];
   dataSource = ELEMENT_DATA;
 
   constructor(private mainService: MainService, public dialog: MatDialog) {
+    this.getTimezones();
   }
 
   onDateChange(event): void {
@@ -83,6 +86,15 @@ export class AppComponent {
     this.mainService.getAppointments(data).subscribe(res => {
       this.dataSource = res['data'];
       console.log('result from appointments: ', res, this.dataSource);
+    })
+  }
+
+  //to get all timezones
+  getTimezones() {
+    this.mainService.getTimezones('').subscribe(res => {
+      this.timezones = res['data'];
+      this.selectedTimezone = " (GMT+05:30) Asia/Kolkata";
+      console.log('result from timezones: ', res, this.timezones);
     })
   }
 

@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatTableModule } from '@angular/material/table';
     FormsModule,
     MatSnackBarModule,
     MatTabsModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ],
   providers: [AppComponent],
   bootstrap: [AppComponent]

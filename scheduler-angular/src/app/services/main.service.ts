@@ -22,4 +22,9 @@ export class MainService {
     const subURL = 'api/appointments'
     return this.apiService.get(subURL, params);
   }
+
+  getTimezones(params) {
+    const subURL = 'api/getTimezones'
+    return this.apiService.get(subURL, params);
+  }
 }

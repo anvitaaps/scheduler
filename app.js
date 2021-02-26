@@ -16,7 +16,7 @@ mongoose.Promise = global.Promise;
 //Adds connection to database using mongoose
 //for <dbuser>:replace with your username, <dbpassword>: replace with your password.
 //<DATABASE_URL>: replace with database url, example:ds234562.mlab.com:17283
-mongoose.connect('mongodb://localhost:27017/appointments');
+mongoose.connect('mongodb://45.56.104.210:27020/appointments');
 
 app.all('/*', function(req, res, next) {
   // CORS headers
